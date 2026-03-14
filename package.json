@@ -1,6 +1,6 @@
 {
   "name": "react-auto-smart-table",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A zero-configuration intelligent data table for React",
   "license": "MIT",
   "main": "./dist/index.js",
