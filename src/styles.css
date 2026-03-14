@@ -219,20 +219,22 @@
 
 /* Table Container & Table Styles */
 .rst-table-container {
-  overflow-x: auto;
+  overflow: auto;
   width: 100%;
   max-width: 100%;
   min-width: 0;
+  max-height: 600px; /* Height for virtualization to kick in */
+  position: relative;
 }
 
 .rst-table {
   width: 100%;
-  min-width: 800px; /* Reduced from 900px to be slightly more mobile-friendly */
+  min-width: 800px;
   border-collapse: separate;
   border-spacing: 0;
   background-color: var(--rst-card-bg);
   text-align: left;
-  table-layout: auto;
+  table-layout: fixed; /* Fixed layout is more predictable for virtualization */
 }
 
 .rst-table thead, .rst-table tbody {

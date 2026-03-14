@@ -55,6 +55,7 @@ export const SmartTable: React.FC<SmartTableProps> = ({
   const finalData = pagination ? paginatedData : dataToRenderOrPaginate;
 
   const [showFilters, setShowFilters] = React.useState(true);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
 
   if (!data || data.length === 0) {
     return (
@@ -121,7 +122,7 @@ export const SmartTable: React.FC<SmartTableProps> = ({
 
       {data.length > 0 && finalData.length > 0 && (
         <section className="rst-card">
-          <div className="rst-table-container">
+          <div className="rst-table-container" ref={scrollRef}>
             <table className="rst-table">
               <TableHeader 
                 schema={schema} 
@@ -130,7 +131,12 @@ export const SmartTable: React.FC<SmartTableProps> = ({
                 sortDirection={sortDirection}
                 onSort={handleSort}
               />
-              <TableBody data={finalData} schema={schema} registry={registry} />
+              <TableBody 
+                data={finalData} 
+                schema={schema} 
+                registry={registry} 
+                scrollRef={scrollRef}
+              />
             </table>
           </div>
 
