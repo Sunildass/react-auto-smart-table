@@ -5,7 +5,7 @@
 
 A zero-configuration, intelligent React data table that automatically analyzes your data to provide a premium, production-ready dashboard experience out of the box.
 
-![SmartTable Preview](https://raw.githubusercontent.com/Sunildass/react-auto-smart-table/main/docs/preview.png)
+[**Live Demo**](https://sunildass.github.io/react-auto-smart-table/)
 
 ## 🚀 Why react-auto-smart-table?
 
@@ -94,10 +94,8 @@ import { currencyPlugin, percentagePlugin } from 'react-auto-smart-table';
 | `plugins` | `Plugin[]` | `[]` | Array of plugins to extend detection/rendering. |
 | `title` | `string` | `undefined`| Optional table header title. |
 
-## 🏗️ Architecture
-
 `react-auto-smart-table` is built with modern React patterns:
-- **Virtualization**: Uses `react-virtual` for windowing long lists.
+- **Virtualization**: Uses `@tanstack/react-virtual` for windowing long lists.
 - **Styles**: Zero-dependency CSS-in-JS/External CSS for maximum compatibility.
 - **Inference**: A custom analysis engine that samples data for high accuracy and performance.
 
