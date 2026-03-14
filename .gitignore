@@ -7,7 +7,6 @@ yarn-error.log*
 
 # Build outputs
 dist/
-playground/
 /playground/dist/
 
 # Test logs and temporary files

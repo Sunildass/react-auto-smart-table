@@ -1,130 +1,106 @@
-# React Smart Table ✨
+# react-auto-smart-table
 
-> A zero-configuration, intelligent data table for React that visually explains your data instantly.
+[![npm version](https://img.shields.io/npm/v/react-auto-smart-table.svg)](https://www.npmjs.com/package/react-auto-smart-table)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![Demo Banner](https://via.placeholder.com/800x400?text=React+Smart+Table+Demo) <!-- Placeholder for hero image -->
+A zero-configuration, intelligent React data table that automatically analyzes your data to provide a premium, production-ready dashboard experience out of the box.
 
-Drop in your raw JSON datasets and watch `<SmartTable />` automatically infer the schema, generate columns, detect semantic types, allow rich filtering, wire sorting heuristics, and build beautiful analytics widgets.
+![SmartTable Preview](https://raw.githubusercontent.com/Sunildass/react-auto-smart-table/main/docs/preview.png)
 
-All powered by an intelligent Schema Inference Engine scaling up to 10,000+ virtualized rows gracefully.
+## 🚀 Why react-auto-smart-table?
 
----
+Most data tables require extensive configuration—defining columns, types, filters, and sorters manually. **react-auto-smart-table** flips the script. Just pass your JSON array, and it handles the heavy lifting.
 
-## ⚡ Features
-
-- 🧠 **Zero-Config Schema Inference:** Pass an array of objects. That's it. It automatically figures out if columns are emails, URLs, dates, currenices, booleans, or percentages.
-- 🎨 **Semantic Cell Renderers:** Emails become clickable, booleans become Badges, Currencies format intelligently.
-- 📊 **Insight Engine Chart Generation:** Enable the `insights` prop to instantly detect groupings and metrics. We manufacture Recharts widgets out of thin air to visualize your table data perfectly. 
-- 🎛️ **Intelligent Filtering & Sorting:** Deep filtering built-in. Strings get fuzzy search, numbers get min/max range sliders, dates get calendar pickers.
-- 🚀 **Extreme Performance:** Built on `react-virtual`, instantly renders lists with thousands of objects without freezing the DOM.
-- 🔌 **Plugin SDK:** Inject your own custom Type Detectors and Cell Renderers. Want to render a bespoke Jira Ticket tag? Register a plugin in 3 lines of code.
-
----
+-   **🧠 Intelligent Schema Inference**: Automatically detects types (dates, currency, percentage, booleans, etc.) and formats them beautifully.
+-   **⚡ High Performance**: Built-in virtualization via `react-virtual` for handling thousands of records with zero lag.
+-   **🎨 Modern Dashboard UI**: A premium SaaS-ready design with adaptive column widths, card-based layouts, and rich visual hierarchy.
+-   **📊 Automatic Insights**: Generates meaningful charts and aggregations based on your data patterns.
+-   **🔌 Extensible Plugin SDK**: Add custom cell renderers and detectors using a simple plugin system.
 
 ## 📦 Installation
-```bash
-npm install react-smart-table
-```
-
-*(Note: Ensure you have `react`, `react-dom`, and `recharts` installed as peer dependencies)*
 
 ```bash
-npm install react react-dom recharts
+npm install react-auto-smart-table
+# or
+yarn add react-auto-smart-table
 ```
 
----
-
-## 🎮 Interactive Playing (Demo)
-
-Want to see `<SmartTable />` in action immediately? We have provided a live React playground.
-
-```bash
-cd playground
-npm install
-npm run dev
-```
-
----
-
-## 🚀 Basic Usage
-
-The design philosophy is that one line of code builds a functional dashboard.
+## 🛠️ Quick Start
 
 ```tsx
-import React from 'react';
-import { SmartTable } from 'react-smart-table';
+import { SmartTable } from 'react-auto-smart-table';
 
-const dataset = [
-  { id: 1, name: "Alice", email: "alice@example.com", revenue: 5400.5, active: true },
-  { id: 2, name: "Bob", email: "bob@example.com", revenue: 800.75, active: false },
-  // ... thousands of rows
+const data = [
+  { id: 1, name: "John Smith", amount: 1200.50, status: "Active", joined: "2024-01-15" },
+  { id: 2, name: "Maria Garcia", amount: 450.00, status: "Pending", joined: "2024-02-10" },
+  // ...
 ];
 
-export function App() {
+function App() {
   return (
     <div style={{ height: '600px' }}>
-       {/* 1 Line. Infinite Power. */}
-       <SmartTable data={dataset} />
+      <SmartTable 
+        data={data}
+        sortable
+        filterable
+        insights
+      />
     </div>
   );
 }
 ```
 
----
+## ✨ Features
 
-## 🔥 Advanced Usage
+### 1. Intelligent Data Analytics
+The table doesn't just display data; it understands it.
+- **Auto-Formatting**: Recognizes "USD", "$", or large numbers and applies appropriate formatting.
+- **Smart Labels**: Automatically transforms `camelCase` or `snake_case` keys into `Title Case` labels (e.g., `order_id` becomes `Order ID`).
+- **Date Normalization**: Sophisticated detection for ISO strings, timestamps, and various date formats.
 
-Unlock the full suite of the table by opting into features via component props.
+### 2. Built-in Interactivity
+- **Multi-column Sorting**: Interaction-rich headers with visual sort indicators (↑, ↓, ⇅).
+- **Responsive Filtering**: Automatic generation of filter panels based on column types (text search for strings, toggles for booleans).
+- **Pagination**: Smooth client-side pagination for manageable data chunks.
+
+### 3. Insights Panel
+The `insights` prop enables an analytics dashboard above the table that automatically visualizes:
+- Distribution of categorical data (Bar charts).
+- Trends over time (Time-series charts).
+- Histograms for numeric value distributions.
+
+### 4. Plugin System
+Extend the table with your own logic:
 
 ```tsx
+import { currencyPlugin, percentagePlugin } from 'react-auto-smart-table';
+
 <SmartTable 
-  data={dataset} 
-  sortable={true} 
-  filterable={true} 
-  pagination={true} 
-  insights={true} // Triggers the Recharts visualizer 
+  data={data} 
+  plugins={[currencyPlugin, percentagePlugin]} 
 />
 ```
 
-### Writing a Custom Plugin
+## ⚙️ Props
 
-Need custom parsing rules? Override the inference engine!
-
-```tsx
-import { SmartTable, SmartTablePlugin } from 'react-smart-table';
-
-const customStatusPlugin: SmartTablePlugin = {
-  detect: (key, sample) => {
-    // If column name has 'status', take it over.
-    if (key.toLowerCase() === 'status') return 'custom-status';
-    return null; 
-  },
-  render: ({ value }) => {
-    const color = value === 'Failed' ? 'red' : 'green';
-    return <span style={{ color }}>{value}</span>;
-  }
-}
-
-// Pass it into the component
-<SmartTable data={dataset} plugins={[customStatusPlugin]} />
-```
-
----
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `data` | `any[]` | `[]` | The array of objects to display. |
+| `sortable` | `boolean` | `false` | Enable/disable column sorting. |
+| `filterable` | `boolean` | `false` | Enable/disable the interactive filter panel. |
+| `insights` | `boolean` | `false` | Show auto-generated analytic charts. |
+| `pagination`| `boolean` | `false` | Enable client-side pagination. |
+| `pageSize` | `number` | `10` | Number of rows per page. |
+| `plugins` | `Plugin[]` | `[]` | Array of plugins to extend detection/rendering. |
+| `title` | `string` | `undefined`| Optional table header title. |
 
 ## 🏗️ Architecture
 
-- **Phase 1: Analytics Inference:** Calculates confidence scores based on sampled rows resolving deterministic types (`src/analyzer`).
-- **Phase 2: Renderer Factory:** Injects React nodes based on the schema mapping output.
-- **Phase 3: Hook Isolation:** Filters, Sorting, and Pagination maintain their own state context cleanly separated from UI templates.
-- **Phase 4: Insight Builder:** Generates aggregation metrics traversing Categorical parameters vs Numeric outputs building a configuration map for rendering Recharts. 
+`react-auto-smart-table` is built with modern React patterns:
+- **Virtualization**: Uses `react-virtual` for windowing long lists.
+- **Styles**: Zero-dependency CSS-in-JS/External CSS for maximum compatibility.
+- **Inference**: A custom analysis engine that samples data for high accuracy and performance.
 
-## 💡 Contributing
+## 📄 License
 
-We welcome pull requests and issues! 
-
-1. Clone the repository
-2. Run `npm install`
-3. Run Vitest Unit/Integration testing suit `npm run test`
-
----
-*Created carefully using rigorous step-based execution.*
+MIT © [Sunildass](https://github.com/Sunildass)
