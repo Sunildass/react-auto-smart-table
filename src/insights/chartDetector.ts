@@ -1,4 +1,4 @@
-import { TableSchema, ColumnType, Dataset } from '../schema/schemaTypes';
+import { TableSchema, ColumnType } from '../schema/schemaTypes';
 
 export type FieldRole = 'dimension' | 'metric' | 'discard';
 

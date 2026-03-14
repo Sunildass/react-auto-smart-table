@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
+    "react-auto-smart-table": "^1.0.2",
     "react-dom": "^18.2.0",
-    "react-smart-table": "file:..",
     "react-virtual": "^2.10.4",
     "recharts": "^2.12.7"
   },

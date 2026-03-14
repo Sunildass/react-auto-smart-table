@@ -1,8 +1,7 @@
-import React from 'react';
 import { SmartTablePlugin } from '../schema/schemaTypes';
 
 export const currencyPlugin: SmartTablePlugin = {
-  detect: (columnKey: string, sample: any[]) => {
+  detect: (columnKey: string, _sample: any[]) => {
     const lowerKey = columnKey.toLowerCase();
     if (lowerKey.includes('amount') || lowerKey.includes('price') || lowerKey.includes('revenue')) {
       return 'currency';

@@ -1,8 +1,7 @@
-import React from 'react';
 import { SmartTablePlugin } from '../schema/schemaTypes';
 
 export const percentagePlugin: SmartTablePlugin = {
-  detect: (columnKey: string, sample: any[]) => {
+  detect: (columnKey: string, _sample: any[]) => {
     const lowerKey = columnKey.toLowerCase();
     if (lowerKey.includes('percent') || lowerKey.includes('rate')) {
       return 'percentage';

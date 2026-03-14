@@ -1,6 +1,5 @@
 import React from 'react';
 import { TableSchema } from '../schema/schemaTypes';
-import { SortController } from './SortController';
 import { SortDirection } from '../hooks/useSorting';
 import { toTitleCase } from '../utils/stringUtils';
 

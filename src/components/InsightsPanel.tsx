@@ -75,7 +75,7 @@ export const InsightsPanel: React.FC<InsightsPanelProps> = ({ data, schema }) =>
                     nameKey={widget.xAxisKey}
                     label={false}
                   >
-                    {widget.data.map((entry: any, index: number) => (
+                    {widget.data.map((_entry: any, index: number) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
