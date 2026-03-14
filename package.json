@@ -1,0 +1,62 @@
+{
+  "name": "react-auto-smart-table",
+  "version": "1.0.0",
+  "description": "A zero-configuration intelligent data table for React",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_USERNAME/react-auto-smart-table.git"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/react-auto-smart-table#readme",
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/react-auto-smart-table/issues"
+  },
+  "keywords": [
+    "react",
+    "table",
+    "data-table",
+    "smart-table",
+    "zero-config",
+    "schema-inference"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "react-virtual": "^2.10.4",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.21",
+    "jsdom": "^24.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2",
+    "vitest": "^1.3.1"
+  }
+}
