@@ -1,6 +1,6 @@
 {
   "name": "react-auto-smart-table",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A zero-configuration intelligent data table for React",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -20,11 +20,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YOUR_USERNAME/react-auto-smart-table.git"
+    "url": "git@github.com:Sunildass/react-auto-smart-table.git"
   },
-  "homepage": "https://github.com/YOUR_USERNAME/react-auto-smart-table#readme",
+  "homepage": "https://github.com/Sunildass/react-auto-smart-table#readme",
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/react-auto-smart-table/issues"
+    "url": "https://github.com/Sunildass/react-auto-smart-table/issues"
   },
   "keywords": [
     "react",
