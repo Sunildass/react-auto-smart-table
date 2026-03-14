@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-auto-smart-table": "^1.0.2",
+    "react-auto-smart-table": "^1.0.3",
     "react-dom": "^18.2.0",
     "@tanstack/react-virtual": "^3.13.12",
     "recharts": "^2.12.7"
