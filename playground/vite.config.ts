@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "react-smart-table": path.resolve(__dirname, "../src/index.ts"),
+      "react-auto-smart-table": path.resolve(__dirname, "../dist/index.mjs"),
     },
   },
 });

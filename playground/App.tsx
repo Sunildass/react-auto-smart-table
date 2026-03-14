@@ -1,8 +1,12 @@
-import { useState, useEffect, useMemo } from 'react';
-import { SmartTable, currencyPlugin, percentagePlugin } from '../src';
-import { PlaygroundLayout } from './components/PlaygroundLayout';
-import { JsonEditor } from './components/JsonEditor';
-import { EXAMPLE_DATASETS } from './examples';
+import { useState, useEffect, useMemo } from "react";
+import {
+  SmartTable,
+  currencyPlugin,
+  percentagePlugin,
+} from "react-auto-smart-table";
+import { PlaygroundLayout } from "./components/PlaygroundLayout";
+import { JsonEditor } from "./components/JsonEditor";
+import { EXAMPLE_DATASETS } from "./examples";
 
 const defaultJSONString = JSON.stringify(EXAMPLE_DATASETS.users, null, 2);
 
@@ -21,11 +25,14 @@ export default function App() {
       try {
         const parsed = JSON.parse(jsonText);
         if (Array.isArray(parsed)) {
-          if (parsed.length > 0 && (typeof parsed[0] !== 'object' || parsed[0] === null)) {
-             setError("JSON must be an array of objects");
+          if (
+            parsed.length > 0 &&
+            (typeof parsed[0] !== "object" || parsed[0] === null)
+          ) {
+            setError("JSON must be an array of objects");
           } else {
-             setData(parsed);
-             setError(null);
+            setData(parsed);
+            setError(null);
           }
         } else {
           setError("JSON must be an array of objects");
@@ -40,12 +47,12 @@ export default function App() {
   const stats = useMemo(() => {
     if (data.length === 0) return null;
     const columns = Object.keys(data[0] || {});
-    const types = columns.map(col => typeof data[0][col]);
+    const types = columns.map((col) => typeof data[0][col]);
     const uniqueTypes = [...new Set(types)];
     return {
       records: data.length,
       columns: columns.length,
-      types: uniqueTypes.join(', ')
+      types: uniqueTypes.join(", "),
     };
   }, [data]);
 
@@ -63,14 +70,20 @@ export default function App() {
 
       {stats && (
         <div className="stats-container">
-          <div className="stat-badge">Records: <span>{stats.records}</span></div>
-          <div className="stat-badge">Columns: <span>{stats.columns}</span></div>
-          <div className="stat-badge">Types: <span>{stats.types}</span></div>
+          <div className="stat-badge">
+            Records: <span>{stats.records}</span>
+          </div>
+          <div className="stat-badge">
+            Columns: <span>{stats.columns}</span>
+          </div>
+          <div className="stat-badge">
+            Types: <span>{stats.types}</span>
+          </div>
         </div>
       )}
 
       {error && <div className="error-panel">{error}</div>}
-      
+
       {!error && data.length > 0 && (
         <SmartTable
           data={data}
@@ -91,9 +104,18 @@ export default function App() {
       <div className="dataset-selector">
         <div className="panel-title">Explore Examples</div>
         <div className="dataset-buttons">
-          <button className="dataset-btn" onClick={() => loadDataset('users')}>Users Dataset</button>
-          <button className="dataset-btn" onClick={() => loadDataset('orders')}>Orders Dataset</button>
-          <button className="dataset-btn" onClick={() => loadDataset('analytics')}>Analytics Dataset</button>
+          <button className="dataset-btn" onClick={() => loadDataset("users")}>
+            Users Dataset
+          </button>
+          <button className="dataset-btn" onClick={() => loadDataset("orders")}>
+            Orders Dataset
+          </button>
+          <button
+            className="dataset-btn"
+            onClick={() => loadDataset("analytics")}
+          >
+            Analytics Dataset
+          </button>
         </div>
       </div>
     </div>
@@ -105,7 +127,7 @@ export default function App() {
         <JsonEditor
           value={jsonText}
           onChange={setJsonText}
-          onReset={() => loadDataset('users')}
+          onReset={() => loadDataset("users")}
         />
       }
       rightPanel={rightPanelContent}
