@@ -13,7 +13,7 @@
     "react": "^18.2.0",
     "react-auto-smart-table": "^1.0.2",
     "react-dom": "^18.2.0",
-    "react-virtual": "^2.10.4",
+    "@tanstack/react-virtual": "^3.13.12",
     "recharts": "^2.12.7"
   },
   "devDependencies": {
